@@ -34,7 +34,9 @@ void setup(){
   tone(2, 2000);
   delay(200);
   noTone(2);
-  delay(1000); 
+  delay(1000);
+
+  
    
   //iterate over the notes of the melody:
   for (int thisNote = 0; thisNote < sizeof(melody) / sizeof(melody[0]); thisNote++) {
@@ -50,11 +52,25 @@ void setup(){
       to distinguish the notes, set a minimum time between them.
       the note's duration + 30% seems to work well:
      */
+
+    //LED
+    pinMode(8, OUTPUT);
+    pinMode(9, OUTPUT);
+    pinMode(10, OUTPUT);
+    pinMode(11, OUTPUT);
+    pinMode(12, OUTPUT);
+    
+    if (melody == NOTE_A4){
+    digitalWrite(8, HIGH);
+    delay(noteDuration);} 
+    
     int pauseBetweenNotes = noteDuration * 1.30;
     delay(pauseBetweenNotes);
     
     noTone(2); //stop the tone playing:
   }
+  
+  
   digitalWrite(3,LOW);
 }
 
